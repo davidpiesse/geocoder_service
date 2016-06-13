@@ -14,3 +14,26 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+//http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/geocodeAddresses?
+
+//GeocodeServer is the service
+
+$app->get('GeocodeServer/geocodeAddresses',[
+    'as' => 'esri_forward',
+    'uses' => 'GeocodeServiceController@forward'
+]);
+
+$app->get('GeocodeServer/reverseGeocode',[
+    'as' => 'esri_reverse',
+    'uses' => 'GeocodeServiceController@reverse'
+]);
+
+$app->get('forward',[
+    'as' => 'forward',
+    'uses' => 'GeocodeServiceController@forward'
+]);
+
+$app->get('reverse',[
+    'as' => 'forward',
+    'uses' => 'GeocodeServiceController@reverse'
+]);
